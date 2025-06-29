@@ -41,7 +41,8 @@ if st.button("📚 Process Articles"):
         docs = splitter.split_documents(documents)
 
         embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-        vectorstore = Chroma.from_documents(docs, embedding)
+        vectorstore = Chroma.from_documents(documents=docs, embedding=embedding)
+
 
         st.session_state.vectorstore = vectorstore
         st.session_state.docs = docs
